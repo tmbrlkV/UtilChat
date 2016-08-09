@@ -1,0 +1,26 @@
+group 'edu.test'
+version '1.0-RELEASE'
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'edu.test'
+            artifactId 'util.chat'
+            version "1.0"
+
+            from components.java
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.fasterxml.jackson.core:jackson-databind:latest.release"
+    testCompile "junit:junit:4.12"
+}
