@@ -2,23 +2,28 @@ group 'edu.test'
 version '1.0-RELEASE'
 
 apply plugin: 'java'
-apply plugin: 'maven-publish'
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId 'edu.test'
-            artifactId 'util.chat'
-            version "1.0"
-
-            from components.java
-        }
-    }
-}
+apply plugin: 'idea'
+apply plugin: 'maven'
 
 repositories {
     mavenCentral()
 }
+
+jar {
+    baseName = 'chat-utils'
+    version = '1.0.0'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer{
+            repository(url:"${url}/repository/local-rep"){
+                authentication(userName: username, password: password)
+            }
+        }
+    }
+}
+
 
 dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:latest.release"

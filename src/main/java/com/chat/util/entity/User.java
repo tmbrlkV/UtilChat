@@ -1,11 +1,15 @@
 package com.chat.util.entity;
 
-public class User  {
+
+import com.chat.util.json.JsonObjectFactory;
+
+public class User {
     private int id;
     private String login;
     private String password;
 
-    public User() {}
+    public User() {
+    }
 
     public User(int id, String login, String password) {
         this.id = id;
@@ -73,10 +77,7 @@ public class User  {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return JsonObjectFactory.getJsonString(this);
     }
+
 }
